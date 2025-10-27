@@ -1448,6 +1448,484 @@ console.log(rezultat);  // 60</code></pre>
                 solution: 'const brojevi = [5, 10, 15, 20];\nconst suma = brojevi.reduce((ukupno, broj) => ukupno + broj, 0);\nconsole.log(suma);'
             }
         ]
+    },
+    {
+        id: 9,
+        module: "Rad sa Podacima",
+        title: "Objekti (Objects)",
+        duration: "30 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Objekti (Objects)</h1>
+                <p class="lesson-meta">Modul 4 - Rad sa Podacima • 30 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta su objekti?</h2>
+                <p>Objekti su kolekcije podataka i funkcionalnosti. Objekti grupišu povezane podatke zajedno. Dok nizovi drže listu vrednosti, objekti drže parove ključ-vrednost.</p>
+
+                <div class="example-box">
+                    <strong>📝 Analogija:</strong>
+                    <p>Objekat je kao karton sa pacijentom u bolnici. Ima polja: ime, prezime, godine, krvna grupa - sve povezano sa jednom osobom.</p>
+                </div>
+
+                <h3>Kreiranje objekata</h3>
+                <pre><code>// Prazan objekat
+let osoba = {};
+
+// Objekat sa svojstvima (properties)
+let korisnik = {
+    ime: "Marko",
+    prezime: "Marković",
+    godine: 25,
+    grad: "Beograd",
+    aktivan: true
+};
+
+console.log(korisnik);
+// { ime: "Marko", prezime: "Marković", godine: 25, grad: "Beograd", aktivan: true }</code></pre>
+
+                <h3>Pristupanje svojstvima</h3>
+                <p>Dva načina da pristupite svojstvima objekta:</p>
+                <pre><code>let korisnik = {
+    ime: "Ana",
+    godine: 30,
+    email: "ana@example.com"
+};
+
+// 1. Dot notation (tačka notacija) - najčešće
+console.log(korisnik.ime);      // "Ana"
+console.log(korisnik.godine);   // 30
+
+// 2. Bracket notation (uglaste zagrade)
+console.log(korisnik["email"]); // "ana@example.com"
+
+// Bracket notation koristimo kada:
+let svojstvo = "ime";
+console.log(korisnik[svojstvo]); // "Ana"</code></pre>
+
+                <h3>Dodavanje i menjanje svojstava</h3>
+                <pre><code>let korisnik = {
+    ime: "Marko",
+    godine: 25
+};
+
+// Dodavanje novog svojstva
+korisnik.grad = "Niš";
+korisnik["zanimanje"] = "Developer";
+
+console.log(korisnik);
+// { ime: "Marko", godine: 25, grad: "Niš", zanimanje: "Developer" }
+
+// Menjanje postojećeg svojstva
+korisnik.godine = 26;
+console.log(korisnik.godine); // 26</code></pre>
+
+                <h3>Brisanje svojstava</h3>
+                <pre><code>let korisnik = {
+    ime: "Ana",
+    godine: 28,
+    privremeno: true
+};
+
+// Brisanje svojstva
+delete korisnik.privremeno;
+
+console.log(korisnik);
+// { ime: "Ana", godine: 28 }</code></pre>
+
+                <h3>Metode u objektima</h3>
+                <p>Objekti mogu imati funkcije kao svojstva - to zovemo <strong>metode</strong>:</p>
+                <pre><code>let korisnik = {
+    ime: "Marko",
+    godine: 25,
+    
+    // Metoda
+    pozdravi: function() {
+        console.log("Zdravo, ja sam " + this.ime);
+    },
+    
+    // Kraća sintaksa (ES6)
+    predstaviSe() {
+        console.log(\`Ja sam \${this.ime}, imam \${this.godine} godina.\`);
+    }
+};
+
+korisnik.pozdravi();        // "Zdravo, ja sam Marko"
+korisnik.predstaviSe();     // "Ja sam Marko, imam 25 godina."</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 this keyword:</strong>
+                    <p><code>this</code> se odnosi na trenutni objekat. Kada kažemo <code>this.ime</code> unutar objekta, pristupamo <code>ime</code> svojstvu tog objekta.</p>
+                </div>
+
+                <h3>Prolazak kroz objekat</h3>
+                <pre><code>let osoba = {
+    ime: "Ana",
+    godine: 30,
+    grad: "Beograd"
+};
+
+// for...in petlja
+for (let kljuc in osoba) {
+    console.log(kljuc + ": " + osoba[kljuc]);
+}
+// Output:
+// ime: Ana
+// godine: 30
+// grad: Beograd
+
+// Object.keys() - niz svih ključeva
+let kljucevi = Object.keys(osoba);
+console.log(kljucevi); // ["ime", "godine", "grad"]
+
+// Object.values() - niz svih vrednosti
+let vrednosti = Object.values(osoba);
+console.log(vrednosti); // ["Ana", 30, "Beograd"]
+
+// Object.entries() - niz parova [ključ, vrednost]
+let parovi = Object.entries(osoba);
+console.log(parovi);
+// [["ime", "Ana"], ["godine", 30], ["grad", "Beograd"]]</code></pre>
+
+                <h3>Ugnežđeni objekti</h3>
+                <pre><code>let korisnik = {
+    ime: "Marko",
+    godine: 25,
+    adresa: {
+        ulica: "Knez Mihailova 15",
+        grad: "Beograd",
+        postanskiBroj: 11000
+    },
+    hobi: ["programiranje", "fudbal", "gitara"]
+};
+
+// Pristupanje ugnežđenim podacima
+console.log(korisnik.adresa.grad);        // "Beograd"
+console.log(korisnik.hobi[0]);            // "programiranje"</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Proizvod:</strong>
+                    <pre><code>let proizvod = {
+    naziv: "Laptop",
+    cena: 50000,
+    naStanju: true,
+    kategorija: "elektronika",
+    specifikacije: {
+        procesor: "Intel i5",
+        ram: "16GB",
+        disk: "512GB SSD"
+    },
+    
+    prikaziInfo() {
+        console.log(\`\${this.naziv} - \${this.cena} RSD\`);
+    },
+    
+    primeniPopust(procenat) {
+        this.cena = this.cena * (1 - procenat / 100);
+        console.log(\`Nova cena: \${this.cena} RSD\`);
+    }
+};
+
+proizvod.prikaziInfo();      // "Laptop - 50000 RSD"
+proizvod.primeniPopust(10);  // "Nova cena: 45000 RSD"
+console.log(proizvod.specifikacije.ram); // "16GB"</code></pre>
+                </div>
+
+                <h3>Kopiranje objekata</h3>
+                <pre><code>let original = { ime: "Ana", godine: 25 };
+
+// ❌ Ovo NE kopira - deli referencu!
+let kopija1 = original;
+kopija1.godine = 30;
+console.log(original.godine); // 30 (promenilo se!)
+
+// ✅ Pravo kopiranje - Object.assign()
+let kopija2 = Object.assign({}, original);
+
+// ✅ Spread operator (najlakše)
+let kopija3 = { ...original };
+kopija3.godine = 35;
+console.log(original.godine); // 25 (originalni netaknut)</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Važno!</strong>
+                    <p>Objekti se dodeljuju po referenci! Ako napravite <code>let b = a</code>, oba pokazuju na isti objekat. Koristite spread operator <code>{...objekat}</code> za kopiranje.</p>
+                </div>
+
+                <h3>Provera svojstava</h3>
+                <pre><code>let korisnik = {
+    ime: "Marko",
+    godine: 25
+};
+
+// Provera da li svojstvo postoji
+console.log("ime" in korisnik);     // true
+console.log("email" in korisnik);   // false
+
+// hasOwnProperty metoda
+console.log(korisnik.hasOwnProperty("ime"));  // true</code></pre>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Kreiranje objekta",
+                task: "Napravite objekat 'auto' sa svojstvima: marka, model, godina, boja. Ispišite marku i godinu.",
+                hint: "Koristite {} i ime: vrednost format",
+                solution: 'const auto = {\n    marka: "Toyota",\n    model: "Corolla",\n    godina: 2020,\n    boja: "crna"\n};\n\nconsole.log(auto.marka);\nconsole.log(auto.godina);'
+            },
+            {
+                title: "Vežba 2: Metode",
+                task: "Napravite objekat 'kalkulator' sa metodama saberi(a, b) i pomnozi(a, b). Testirajte ih.",
+                hint: "Metode su funkcije unutar objekta",
+                solution: 'const kalkulator = {\n    saberi(a, b) {\n        return a + b;\n    },\n    pomnozi(a, b) {\n        return a * b;\n    }\n};\n\nconsole.log(kalkulator.saberi(5, 3));\nconsole.log(kalkulator.pomnozi(4, 7));'
+            },
+            {
+                title: "Vežba 3: Prolazak kroz objekat",
+                task: "Napravite objekat sa 3-4 svojstva, pa ispišite sve ključeve i vrednosti koristeći for...in petlju.",
+                hint: "for (let key in objekat)",
+                solution: 'const osoba = {\n    ime: "Ana",\n    godine: 28,\n    grad: "Novi Sad"\n};\n\nfor (let kljuc in osoba) {\n    console.log(kljuc + ": " + osoba[kljuc]);\n}'
+            }
+        ]
+    },
+    {
+        id: 10,
+        module: "Rad sa Tekstom",
+        title: "String Metode",
+        duration: "25 min",
+        content: `
+            <div class="lesson-header">
+                <h1>String Metode</h1>
+                <p class="lesson-meta">Modul 5 - Rad sa Tekstom • 25 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Rad sa tekstom u JavaScript-u</h2>
+                <p>String-ovi (tekstovi) imaju mnoštvo korisnih metoda koje olakšavaju rad sa tekstom.</p>
+
+                <h3>Dužina string-a</h3>
+                <pre><code>let tekst = "Zdravo Svete";
+console.log(tekst.length);  // 12 (broj karaktera)
+
+let prazan = "";
+console.log(prazan.length); // 0</code></pre>
+
+                <h3>Pristupanje karakterima</h3>
+                <pre><code>let tekst = "JavaScript";
+
+// Pristup kao nizu
+console.log(tekst[0]);      // "J"
+console.log(tekst[4]);      // "S"
+
+// charAt() metoda
+console.log(tekst.charAt(0));   // "J"
+console.log(tekst.charAt(9));   // "t"
+
+// Poslednji karakter
+console.log(tekst[tekst.length - 1]);  // "t"</code></pre>
+
+                <h3>Velika i mala slova</h3>
+                <pre><code>let tekst = "JavaScript je Odličan";
+
+// Pretvori u velika slova
+console.log(tekst.toUpperCase());  // "JAVASCRIPT JE ODLIČAN"
+
+// Pretvori u mala slova
+console.log(tekst.toLowerCase());  // "javascript je odličan"
+
+// Originalni tekst ostaje nepromenjen
+console.log(tekst);  // "JavaScript je Odličan"</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 String metode NE menjaju originalni string!</strong>
+                    <p>String-ovi su immutable (nepromenjivi). Metode vraćaju NOVI string.</p>
+                </div>
+
+                <h3>Traženje u tekstu</h3>
+                <pre><code>let tekst = "JavaScript je odličan jezik";
+
+// indexOf() - pozicija prve pojave
+console.log(tekst.indexOf("je"));        // 11
+console.log(tekst.indexOf("odličan"));   // 14
+console.log(tekst.indexOf("Python"));    // -1 (ne postoji)
+
+// lastIndexOf() - pozicija poslednje pojave
+console.log(tekst.lastIndexOf("a"));     // 22
+
+// includes() - da li sadrži (vraća true/false)
+console.log(tekst.includes("JavaScript")); // true
+console.log(tekst.includes("python"));     // false
+
+// startsWith() i endsWith()
+console.log(tekst.startsWith("Java"));  // true
+console.log(tekst.endsWith("jezik"));   // true</code></pre>
+
+                <h3>Isecanje string-a</h3>
+                <pre><code>let tekst = "JavaScript";
+
+// slice(start, end) - kopira deo
+console.log(tekst.slice(0, 4));   // "Java"
+console.log(tekst.slice(4));      // "Script"
+console.log(tekst.slice(-6));     // "Script" (od kraja)
+
+// substring(start, end) - slično kao slice
+console.log(tekst.substring(0, 4)); // "Java"
+
+// substr(start, length) - ZASTARELO, koristite slice
+console.log(tekst.substr(4, 6));    // "Script"</code></pre>
+
+                <h3>Zamena teksta</h3>
+                <pre><code>let tekst = "Volim JavaScript. JavaScript je super!";
+
+// replace() - zameni PRVU pojavu
+let novo = tekst.replace("JavaScript", "Python");
+console.log(novo);  // "Volim Python. JavaScript je super!"
+
+// replaceAll() - zameni SVE pojave
+let novo2 = tekst.replaceAll("JavaScript", "Python");
+console.log(novo2); // "Volim Python. Python je super!"
+
+// Case-insensitive zamena (regex)
+let tekst2 = "Hello HELLO hello";
+let zamenjeno = tekst2.replaceAll(/hello/gi, "Hi");
+console.log(zamenjeno); // "Hi Hi Hi"</code></pre>
+
+                <h3>Uklanjanje razmaka</h3>
+                <pre><code>let tekst = "   Zdravo Svete   ";
+
+// trim() - ukloni sa oba kraja
+console.log(tekst.trim());        // "Zdravo Svete"
+
+// trimStart() - ukloni sa početka
+console.log(tekst.trimStart());   // "Zdravo Svete   "
+
+// trimEnd() - ukloni sa kraja
+console.log(tekst.trimEnd());     // "   Zdravo Svete"</code></pre>
+
+                <h3>Deljenje string-a</h3>
+                <pre><code>let tekst = "jabuka,banana,narandža,kruška";
+
+// split() - podeli u niz
+let voce = tekst.split(",");
+console.log(voce);  // ["jabuka", "banana", "narandža", "kruška"]
+
+// Podela na karaktere
+let rec = "Hello";
+let slova = rec.split("");
+console.log(slova);  // ["H", "e", "l", "l", "o"]
+
+// Podela na reči
+let recenica = "Učim JavaScript svaki dan";
+let reci = recenica.split(" ");
+console.log(reci);  // ["Učim", "JavaScript", "svaki", "dan"]</code></pre>
+
+                <h3>Spajanje string-ova</h3>
+                <pre><code>let ime = "Marko";
+let prezime = "Marković";
+
+// concat() metoda
+let punoIme = ime.concat(" ", prezime);
+console.log(punoIme);  // "Marko Marković"
+
+// + operator (lakše)
+let punoIme2 = ime + " " + prezime;
+console.log(punoIme2);  // "Marko Marković"
+
+// Template literals (najbolje)
+let punoIme3 = \`\${ime} \${prezime}\`;
+console.log(punoIme3);  // "Marko Marković"</code></pre>
+
+                <h3>Ponavljanje string-a</h3>
+                <pre><code>let tekst = "Ha";
+
+// repeat() - ponovi N puta
+console.log(tekst.repeat(3));   // "HaHaHa"
+console.log("=".repeat(20));    // "===================="</code></pre>
+
+                <h3>Padding (dopunjavanje)</h3>
+                <pre><code>let broj = "5";
+
+// padStart() - dodaj na početak
+console.log(broj.padStart(3, "0"));  // "005"
+
+// padEnd() - dodaj na kraj
+console.log(broj.padEnd(3, "0"));    // "500"
+
+// Primer: formatiranje vremena
+let sati = "9";
+let minuti = "5";
+let vreme = sati.padStart(2, "0") + ":" + minuti.padStart(2, "0");
+console.log(vreme);  // "09:05"</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Validacija email-a:</strong>
+                    <pre><code>function validirajEmail(email) {
+    // Ukloni razmake
+    email = email.trim();
+    
+    // Proveri da li sadrži @
+    if (!email.includes("@")) {
+        return "Email mora sadržati @";
+    }
+    
+    // Proveri da li počinje sa slovom
+    if (!email[0].match(/[a-zA-Z]/)) {
+        return "Email mora početi sa slovom";
+    }
+    
+    // Proveri da li se završava sa .com, .rs, .net
+    let validniKrajevi = [".com", ".rs", ".net", ".org"];
+    let validan = validniKrajevi.some(kraj => email.endsWith(kraj));
+    
+    if (!validan) {
+        return "Email mora se završiti sa .com, .rs, .net ili .org";
+    }
+    
+    return "Email je validan!";
+}
+
+console.log(validirajEmail("  marko@gmail.com  "));  // "Email je validan!"
+console.log(validirajEmail("markogmail.com"));       // "Email mora sadržati @"
+console.log(validirajEmail("marko@gmail.xyz"));      // "Email mora se završiti..."</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - URL slug:</strong>
+                    <pre><code>function napraviSlug(naslov) {
+    return naslov
+        .toLowerCase()                    // mala slova
+        .trim()                           // ukloni razmake
+        .replace(/\s+/g, "-")             // razmake u crtice
+        .replace(/[^\w\-]+/g, "")         // ukloni spec. karaktere
+        .replace(/\-\-+/g, "-");          // duplirane crtice u jednu
+}
+
+console.log(napraviSlug("Učim JavaScript Programiranje!"));
+// "ucim-javascript-programiranje"
+
+console.log(napraviSlug("   Hello   World!!!   "));
+// "hello-world"</code></pre>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Velika/mala slova",
+                task: "Napravite funkciju koja prima ime i vraća ga sa prvim slovom velikim, ostala mala (npr. 'MARKO' -> 'Marko').",
+                hint: "Koristite charAt(0).toUpperCase() i slice(1).toLowerCase()",
+                solution: 'function formatirajIme(ime) {\n    return ime.charAt(0).toUpperCase() + ime.slice(1).toLowerCase();\n}\n\nconsole.log(formatirajIme("MARKO"));  // "Marko"\nconsole.log(formatirajIme("ana"));    // "Ana"'
+            },
+            {
+                title: "Vežba 2: Provera",
+                task: "Napravite funkciju koja proverava da li tekst sadrži reč 'JavaScript' (case-insensitive).",
+                hint: "Koristite toLowerCase() i includes()",
+                solution: 'function sadrziJavaScript(tekst) {\n    return tekst.toLowerCase().includes("javascript");\n}\n\nconsole.log(sadrziJavaScript("Volim JavaScript"));  // true\nconsole.log(sadrziJavaScript("Volim JAVASCRIPT"));  // true\nconsole.log(sadrziJavaScript("Volim Python"));      // false'
+            },
+            {
+                title: "Vežba 3: Brojanje reči",
+                task: "Napravite funkciju koja broji koliko reči ima u rečenici.",
+                hint: "Koristite trim() i split(' '), pa length",
+                solution: 'function brojReci(recenica) {\n    return recenica.trim().split(" ").length;\n}\n\nconsole.log(brojReci("Učim JavaScript svaki dan"));  // 4\nconsole.log(brojReci("Hello World"));                // 2'
+            }
+        ]
     }
 ];
 
