@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Učenje - Interaktivni Tutor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">{ }</span>
+                    <span class="logo-text">JS Učenje</span>
+                </h1>
+                <div class="progress-bar-container">
+                    <div class="motivation-message">
+                        <span class="motivation-icon">💪</span>
+                        <span class="motivation-text">MOŽEŠ TI TO NEMANJA....NA KORAK SI OD CILJA DA POSTANEŠ FRONT DEV</span>
+                        <span class="motivation-icon">🚀</span>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-text">Vaš progres</span>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                <div class="streak-container">
+                    <div class="streak-info">
+                        <span class="streak-icon">🔥</span>
+                        <div class="streak-details">
+                            <span class="streak-number" id="streakNumber">0</span>
+                            <span class="streak-label">dana zaredom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Daily Motivation Modal -->
+        <div id="motivationModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-icon" id="modalIcon">🎉</span>
+                    <h2 id="modalTitle">Dobrodošao nazad!</h2>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                    <div id="streakInfo" class="modal-streak-info"></div>
+                    <div id="achievementBadges" class="achievement-badges"></div>
+                </div>
+                <button class="modal-close" id="closeModal">Nastavi učenje →</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Lekcije</h2>
+                    <button class="toggle-sidebar" id="toggleSidebar">✕</button>
+                </div>
+                <nav class="lessons-nav" id="lessonsNav">
+                    <!-- Lessons will be dynamically loaded here -->
+                </nav>
+            </aside>
+
+            <!-- Lesson Content Area -->
+            <main class="content-area">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Meni</button>
+                
+                <div class="lesson-container" id="lessonContainer">
+                    <div class="welcome-screen">
+                        <h1>Dobrodošli u JavaScript Interaktivni Tutor! 🎉</h1>
+                        <p class="welcome-subtitle">Vaš put ka savladavanju JavaScript programiranja počinje ovde</p>
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">📚</div>
+                                <h3>Lekcije od Početka</h3>
+                                <p>Počnite od osnovnih koncepata i napredujte ka kompleksnim temama</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💡</div>
+                                <h3>Detaljne Objašnjenja</h3>
+                                <p>Svaki koncept detaljno objašnjen sa primerima iz prakse</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🖥️</div>
+                                <h3>Interaktivno Vežbanje</h3>
+                                <p>Pišite i testirajte kod direktno u browseru</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✅</div>
+                                <h3>Praktične Vežbe</h3>
+                                <p>Rešavajte zadatke i učvrstite svoje znanje</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Praćenje Progresa</h3>
+                                <p>Pratite svoj napredak kroz sve module</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>Kvizovi i Testovi</h3>
+                                <p>Proverite svoje znanje sa kvizovima</p>
+                            </div>
+                        </div>
+
+                        <div class="start-button-container">
+                            <button class="start-button" onclick="startFirstLesson()">
+                                Počnite Učenje →
+                            </button>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>💡 Saveti za učenje:</h3>
+                            <ul>
+                                <li>Pratite lekcije redom - svaka lekcija se nadovezuje na prethodnu</li>
+                                <li>Vežbajte kod odmah u interaktivnom editoru</li>
+                                <li>Ne žurite - važnije je razumeti nego preći brzo</li>
+                                <li>Eksperimentišite sa kodom - probajte različite varijacije</li>
+                                <li>Vraćajte se na prethodne lekcije kada vam treba osveženje</li>
+                                <li>🔥 Učite svaki dan da održite svoj streak!</li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-container">
+                            <div class="stat-card">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-info">
+                                    <div class="stat-number" id="totalDays">0</div>
+                                    <div class="stat-label">Ukupno dana</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🔥</div>
+                                <div class="stat-info">
+                                    <div class="stat-number" id="currentStreak">0</div>
+                                    <div class="stat-label">Trenutni niz</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🏆</div>
+                                <div class="stat-info">
+                                    <div class="stat-number" id="bestStreak">0</div>
+                                    <div class="stat-label">Najbolji niz</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⏰</div>
+                                <div class="stat-info">
+                                    <div class="stat-number" id="lastVisit">Nikad</div>
+                                    <div class="stat-label">Poslednja poseta</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Code Editor -->
+                <div class="code-editor-section" id="codeEditorSection" style="display: none;">
+                    <div class="editor-header">
+                        <h3>Interaktivni Kod Editor</h3>
+                        <div class="editor-actions">
+                            <button class="btn-secondary" id="clearBtn">Obriši</button>
+                            <button class="btn-primary" id="runBtn">Pokreni Kod ▶</button>
+                        </div>
+                    </div>
+                    <div class="editor-content">
+                        <div class="code-input">
+                            <div class="code-header">JavaScript Kod</div>
+                            <textarea id="codeInput" placeholder="// Unesite vaš JavaScript kod ovde..."></textarea>
+                        </div>
+                        <div class="code-output">
+                            <div class="output-header">Rezultat</div>
+                            <div id="codeOutput" class="output-content">
+                                <div class="output-placeholder">Rezultat će se prikazati ovde...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise Section -->
+                <div class="exercise-section" id="exerciseSection" style="display: none;">
+                    <!-- Exercises will be loaded here dynamically -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="lesson-navigation" id="lessonNavigation" style="display: none;">
+                    <button class="nav-btn" id="prevBtn">← Prethodna</button>
+                    <button class="nav-btn nav-btn-next" id="nextBtn">Sledeća →</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="lessons.js"></script>
+    <script src="code-editor.js"></script>
+    <script src="streak-tracker.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
