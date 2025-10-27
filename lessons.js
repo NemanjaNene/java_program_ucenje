@@ -1075,6 +1075,379 @@ izvrsi(() => {
                 solution: 'function jeParan(broj) {\n    return broj % 2 === 0;\n}\n\nconsole.log(jeParan(4));  // true\nconsole.log(jeParan(7));  // false\nconsole.log(jeParan(10)); // true'
             }
         ]
+    },
+    {
+        id: 7,
+        module: "Rad sa Podacima",
+        title: "Nizovi (Arrays)",
+        duration: "25 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Nizovi (Arrays)</h1>
+                <p class="lesson-meta">Modul 4 - Rad sa Podacima • 25 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta su nizovi?</h2>
+                <p>Nizovi (Arrays) su liste vrednosti. Umesto da pravite 10 promenljivih za 10 imena, napravite jedan niz koji drži svih 10 imena!</p>
+
+                <div class="example-box">
+                    <strong>📝 Analogija:</strong>
+                    <p>Niz je kao korpa sa voćem. Umesto da držite svako voće u ruci, stavite ih sve u jednu korpu i možete ih koristiti jednu po jednu.</p>
+                </div>
+
+                <h3>Kreiranje nizova</h3>
+                <pre><code>// Prazan niz
+let lista = [];
+
+// Niz sa vrednostima
+let voce = ["jabuka", "banana", "narandža"];
+let brojevi = [1, 2, 3, 4, 5];
+let mesano = [1, "dva", true, null];  // Može različite tipove
+
+console.log(voce);  // ["jabuka", "banana", "narandža"]</code></pre>
+
+                <h3>Pristupanje elementima</h3>
+                <p>Elementi u nizu se broje od 0 (nulti index)!</p>
+                <pre><code>let voce = ["jabuka", "banana", "narandža"];
+
+console.log(voce[0]);  // "jabuka" - prvi element
+console.log(voce[1]);  // "banana" - drugi element
+console.log(voce[2]);  // "narandža" - treći element
+
+// Poslednji element
+console.log(voce[voce.length - 1]);  // "narandža"</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Važno!</strong>
+                    <p>Nizovi počinju od 0! Prvi element je na poziciji 0, drugi na poziciji 1, itd.</p>
+                </div>
+
+                <h3>Dužina niza</h3>
+                <pre><code>let voce = ["jabuka", "banana", "narandža"];
+
+console.log(voce.length);  // 3 - broj elemenata
+
+// Promena elementa
+voce[1] = "šljiva";
+console.log(voce);  // ["jabuka", "šljiva", "narandža"]</code></pre>
+
+                <h3>Dodavanje elemenata</h3>
+                <pre><code>let voce = ["jabuka", "banana"];
+
+// push() - dodaje na kraj
+voce.push("narandža");
+console.log(voce);  // ["jabuka", "banana", "narandža"]
+
+// unshift() - dodaje na početak
+voce.unshift("šljiva");
+console.log(voce);  // ["šljiva", "jabuka", "banana", "narandža"]</code></pre>
+
+                <h3>Uklanjanje elemenata</h3>
+                <pre><code>let voce = ["jabuka", "banana", "narandža"];
+
+// pop() - uklanja sa kraja
+let poslednje = voce.pop();
+console.log(poslednje);  // "narandža"
+console.log(voce);       // ["jabuka", "banana"]
+
+// shift() - uklanja sa početka
+let prvo = voce.shift();
+console.log(prvo);   // "jabuka"
+console.log(voce);   // ["banana"]</code></pre>
+
+                <h3>Prolazak kroz niz</h3>
+                <pre><code>let voce = ["jabuka", "banana", "narandža"];
+
+// For petlja
+for (let i = 0; i < voce.length; i++) {
+    console.log(voce[i]);
+}
+
+// For...of petlja (lakši način)
+for (let element of voce) {
+    console.log(element);
+}
+
+// forEach metoda (modern način)
+voce.forEach(function(element) {
+    console.log(element);
+});
+
+// forEach sa arrow funkcijom
+voce.forEach(element => console.log(element));</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Lista kupovine:</strong>
+                    <pre><code>let listaKupovine = [];
+
+// Dodavanje stavki
+listaKupovine.push("mleko");
+listaKupovine.push("hleb");
+listaKupovine.push("jaja");
+
+console.log("Lista kupovine:");
+listaKupovine.forEach((stavka, index) => {
+    console.log(\`\${index + 1}. \${stavka}\`);
+});
+
+// Output:
+// Lista kupovine:
+// 1. mleko
+// 2. hleb
+// 3. jaja</code></pre>
+                </div>
+
+                <h3>Korisne metode</h3>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// includes() - provera da li element postoji
+console.log(brojevi.includes(3));  // true
+console.log(brojevi.includes(10)); // false
+
+// indexOf() - pozicija elementa
+console.log(brojevi.indexOf(3));   // 2
+console.log(brojevi.indexOf(10));  // -1 (ne postoji)
+
+// slice() - kopiraj deo niza
+let deo = brojevi.slice(1, 4);
+console.log(deo);  // [2, 3, 4]
+
+// splice() - ukloni/dodaj elemente
+brojevi.splice(2, 1);  // Ukloni 1 element od pozicije 2
+console.log(brojevi);  // [1, 2, 4, 5]</code></pre>
+
+                <h3>Spajanje nizova</h3>
+                <pre><code>let nizA = [1, 2, 3];
+let nizB = [4, 5, 6];
+
+// concat() - spoji nizove
+let spojeno = nizA.concat(nizB);
+console.log(spojeno);  // [1, 2, 3, 4, 5, 6]
+
+// Spread operator (...) - moderan način
+let spojeno2 = [...nizA, ...nizB];
+console.log(spojeno2);  // [1, 2, 3, 4, 5, 6]</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 Česta greška:</strong>
+                    <p>Zaboravljanje da nizovi počinju od 0! Ako niz ima 5 elemenata, indeksi su 0, 1, 2, 3, 4 (ne 1, 2, 3, 4, 5)!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Kreiranje niza",
+                task: "Napravite niz sa 5 vašaih omiljenih filmova i ispišite ga.",
+                hint: "Koristite [] zagrade i navedite filmove u navodnicima",
+                solution: 'const filmovi = ["Inception", "Matrix", "Interstellar", "Avatar", "Gladiator"];\nconsole.log(filmovi);'
+            },
+            {
+                title: "Vežba 2: Pristup elementima",
+                task: "Iz niza [10, 20, 30, 40, 50] ispišite prvi i poslednji element.",
+                hint: "Prvi je [0], poslednji je [niz.length - 1]",
+                solution: 'const brojevi = [10, 20, 30, 40, 50];\nconsole.log(brojevi[0]);  // Prvi\nconsole.log(brojevi[brojevi.length - 1]);  // Poslednji'
+            },
+            {
+                title: "Vežba 3: Dodavanje i uklanjanje",
+                task: "Napravite prazan niz, dodajte 3 imena sa push(), pa uklonite prvo ime sa shift().",
+                hint: "push() dodaje, shift() uklanja prvi element",
+                solution: 'const imena = [];\nimena.push("Ana");\nimena.push("Marko");\nimena.push("Jovana");\nconsole.log(imena);\n\nimena.shift();\nconsole.log(imena);'
+            }
+        ]
+    },
+    {
+        id: 8,
+        module: "Rad sa Podacima",
+        title: "Array Metode",
+        duration: "30 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Napredne Array Metode</h1>
+                <p class="lesson-meta">Modul 4 - Rad sa Podacima • 30 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Moćne Array metode</h2>
+                <p>JavaScript ima neverovatne metode za rad sa nizovima koje vas čine mnogo produktivnijim!</p>
+
+                <h3>1. map() - Transformacija svakog elementa</h3>
+                <p><strong>Kada koristimo?</strong> Kada želimo da promenimo svaki element u nizu.</p>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// Pomnožimo svaki broj sa 2
+let duplirani = brojevi.map(broj => broj * 2);
+console.log(duplirani);  // [2, 4, 6, 8, 10]
+
+// Originalani niz ostaje isti
+console.log(brojevi);    // [1, 2, 3, 4, 5]
+
+// Sa imenima
+let imena = ["ana", "marko", "jovana"];
+let velikaSlova = imena.map(ime => ime.toUpperCase());
+console.log(velikaSlova);  // ["ANA", "MARKO", "JOVANA"]</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 map() kreira NOVI niz!</strong>
+                    <p>Originalni niz ostaje nepromenjen. map() vraća novi niz sa transformisanim vrednostima.</p>
+                </div>
+
+                <h3>2. filter() - Filtriranje elemenata</h3>
+                <p><strong>Kada koristimo?</strong> Kada želimo samo elemente koji zadovoljavaju neki uslov.</p>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Samo parni brojevi
+let parni = brojevi.filter(broj => broj % 2 === 0);
+console.log(parni);  // [2, 4, 6, 8, 10]
+
+// Samo brojevi veći od 5
+let veci = brojevi.filter(broj => broj > 5);
+console.log(veci);  // [6, 7, 8, 9, 10]
+
+// Sa objektima
+let ljudi = [
+    { ime: "Ana", godine: 25 },
+    { ime: "Marko", godine: 17 },
+    { ime: "Jovana", godine: 30 }
+];
+
+let punoletan = ljudi.filter(osoba => osoba.godine >= 18);
+console.log(punoletan);
+// [{ ime: "Ana", godine: 25 }, { ime: "Jovana", godine: 30 }]</code></pre>
+
+                <h3>3. forEach() - Prolazak kroz svaki element</h3>
+                <p><strong>Kada koristimo?</strong> Kada želimo nešto da uradimo sa svakim elementom.</p>
+                <pre><code>let voce = ["jabuka", "banana", "narandža"];
+
+// Ispiši svaki element
+voce.forEach(element => {
+    console.log(element);
+});
+
+// Sa indeksom
+voce.forEach((element, index) => {
+    console.log(\`\${index + 1}. \${element}\`);
+});
+
+// Output:
+// 1. jabuka
+// 2. banana
+// 3. narandža</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ forEach() vs map():</strong>
+                    <p><code>forEach()</code> - koristi se za akcije, ne vraća novi niz<br>
+                    <code>map()</code> - koristi se za transformaciju, vraća novi niz</p>
+                </div>
+
+                <h3>4. find() - Pronađi prvi element</h3>
+                <pre><code>let brojevi = [5, 12, 8, 130, 44];
+
+// Pronađi prvi broj veći od 10
+let rezultat = brojevi.find(broj => broj > 10);
+console.log(rezultat);  // 12
+
+let korisnici = [
+    { id: 1, ime: "Ana" },
+    { id: 2, ime: "Marko" },
+    { id: 3, ime: "Jovana" }
+];
+
+// Pronađi korisnika sa id = 2
+let korisnik = korisnici.find(k => k.id === 2);
+console.log(korisnik);  // { id: 2, ime: "Marko" }</code></pre>
+
+                <h3>5. reduce() - Sažmi niz u jednu vrednost</h3>
+                <p><strong>Kada koristimo?</strong> Za sabiranje, računanje proseka, itd.</p>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// Sabiranje svih brojeva
+let suma = brojevi.reduce((ukupno, broj) => {
+    return ukupno + broj;
+}, 0);  // 0 je početna vrednost
+console.log(suma);  // 15
+
+// Kraće:
+let suma2 = brojevi.reduce((ukupno, broj) => ukupno + broj, 0);
+
+// Prosek
+let prosek = brojevi.reduce((ukupno, broj) => ukupno + broj, 0) / brojevi.length;
+console.log(prosek);  // 3</code></pre>
+
+                <h3>6. some() i every()</h3>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// some() - DA LI BAR JEDAN zadovoljava uslov?
+let imaParnih = brojevi.some(broj => broj % 2 === 0);
+console.log(imaParnih);  // true (ima 2 i 4)
+
+// every() - DA LI SVI zadovoljavaju uslov?
+let sviParni = brojevi.every(broj => broj % 2 === 0);
+console.log(sviParni);  // false (nisu svi parni)</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Prodavnica:</strong>
+                    <pre><code>let proizvodi = [
+    { naziv: "Laptop", cena: 50000, naStanju: true },
+    { naziv: "Miš", cena: 1500, naStanju: true },
+    { naziv: "Tastatura", cena: 3000, naStanju: false },
+    { naziv: "Monitor", cena: 20000, naStanju: true }
+];
+
+// 1. Proizvodi na stanju
+let dostupni = proizvodi.filter(p => p.naStanju);
+console.log("Na stanju:", dostupni.map(p => p.naziv));
+
+// 2. Primeni popust od 10%
+let saPopustom = proizvodi.map(p => ({
+    ...p,
+    cena: p.cena * 0.9
+}));
+
+// 3. Ukupna vrednost svih proizvoda
+let ukupno = proizvodi.reduce((suma, p) => suma + p.cena, 0);
+console.log("Ukupna vrednost:", ukupno);  // 74500
+
+// 4. Proveri da li ima jeftinijih od 2000
+let imaJeftinih = proizvodi.some(p => p.cena < 2000);
+console.log("Ima jeftinijih:", imaJeftinih);  // true</code></pre>
+                </div>
+
+                <h3>Kombinovanje metoda (Chaining)</h3>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Nađi parne brojeve, pomnožyi ih sa 2, i saberi
+let rezultat = brojevi
+    .filter(broj => broj % 2 === 0)  // [2, 4, 6, 8, 10]
+    .map(broj => broj * 2)            // [4, 8, 12, 16, 20]
+    .reduce((suma, broj) => suma + broj, 0);  // 60
+
+console.log(rezultat);  // 60</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong>
+                    <p>Koristite ove metode umesto for petlji kad god možete - kod je čitljiviji i kraći!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: map()",
+                task: "Iz niza [1, 2, 3, 4, 5] napravite novi niz gde je svaki broj uvećan za 10.",
+                hint: "Koristite map() i dodajte 10 svakom broju",
+                solution: 'const brojevi = [1, 2, 3, 4, 5];\nconst rezultat = brojevi.map(broj => broj + 10);\nconsole.log(rezultat);'
+            },
+            {
+                title: "Vežba 2: filter()",
+                task: "Iz niza [10, 15, 20, 25, 30, 35, 40] filtrirajte samo brojeve veće od 25.",
+                hint: "Koristite filter() i uslov broj > 25",
+                solution: 'const brojevi = [10, 15, 20, 25, 30, 35, 40];\nconst veci = brojevi.filter(broj => broj > 25);\nconsole.log(veci);'
+            },
+            {
+                title: "Vežba 3: reduce()",
+                task: "Saberite sve brojeve u nizu [5, 10, 15, 20] koristeći reduce().",
+                hint: "reduce((ukupno, broj) => ukupno + broj, 0)",
+                solution: 'const brojevi = [5, 10, 15, 20];\nconst suma = brojevi.reduce((ukupno, broj) => ukupno + broj, 0);\nconsole.log(suma);'
+            }
+        ]
     }
 ];
 
