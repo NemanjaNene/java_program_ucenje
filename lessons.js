@@ -1926,6 +1926,1819 @@ console.log(napraviSlug("   Hello   World!!!   "));
                 solution: 'function brojReci(recenica) {\n    return recenica.trim().split(" ").length;\n}\n\nconsole.log(brojReci("Učim JavaScript svaki dan"));  // 4\nconsole.log(brojReci("Hello World"));                // 2'
             }
         ]
+    },
+    {
+        id: 11,
+        module: "Napredni Koncepti",
+        title: "Switch Statement",
+        duration: "15 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Switch Statement</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 15 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Switch - Izbor između više opcija</h2>
+                <p>Switch statement je alternativa za višestruke if-else provere. Koristi se kada imate mnogo mogućih vrednosti.</p>
+
+                <h3>Osnovna sintaksa</h3>
+                <pre><code>let dan = 3;
+
+switch (dan) {
+    case 1:
+        console.log("Ponedeljak");
+        break;
+    case 2:
+        console.log("Utorak");
+        break;
+    case 3:
+        console.log("Sreda");
+        break;
+    case 4:
+        console.log("Četvrtak");
+        break;
+    case 5:
+        console.log("Petak");
+        break;
+    case 6:
+        console.log("Subota");
+        break;
+    case 7:
+        console.log("Nedelja");
+        break;
+    default:
+        console.log("Nevažeći dan");
+}
+// Output: "Sreda"</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ NE ZABORAVITE break!</strong>
+                    <p>Bez <code>break</code>, izvršavanje nastavlja sa sledećim case-om (fall-through)!</p>
+                </div>
+
+                <h3>Grupisanje case-ova</h3>
+                <pre><code>let dan = "subota";
+
+switch (dan) {
+    case "ponedeljak":
+    case "utorak":
+    case "sreda":
+    case "četvrtak":
+    case "petak":
+        console.log("Radni dan");
+        break;
+    case "subota":
+    case "nedelja":
+        console.log("Vikend");
+        break;
+    default:
+        console.log("Nevažeći dan");
+}
+// Output: "Vikend"</code></pre>
+
+                <h3>Switch vs If-Else</h3>
+                <pre><code>// Sa if-else (manje čitljivo)
+let ocena = "B";
+if (ocena === "A") {
+    console.log("Odličan");
+} else if (ocena === "B") {
+    console.log("Vrlo dobar");
+} else if (ocena === "C") {
+    console.log("Dobar");
+} else if (ocena === "D") {
+    console.log("Dovoljan");
+} else {
+    console.log("Nedovoljan");
+}
+
+// Sa switch (čitljivije)
+switch (ocena) {
+    case "A":
+        console.log("Odličan");
+        break;
+    case "B":
+        console.log("Vrlo dobar");
+        break;
+    case "C":
+        console.log("Dobar");
+        break;
+    case "D":
+        console.log("Dovoljan");
+        break;
+    default:
+        console.log("Nedovoljan");
+}</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Kalkulator:</strong>
+                    <pre><code>function kalkulator(a, b, operacija) {
+    let rezultat;
+    
+    switch (operacija) {
+        case "+":
+            rezultat = a + b;
+            break;
+        case "-":
+            rezultat = a - b;
+            break;
+        case "*":
+            rezultat = a * b;
+            break;
+        case "/":
+            if (b === 0) {
+                return "Greška: Deljenje sa nulom";
+            }
+            rezultat = a / b;
+            break;
+        default:
+            return "Nepoznata operacija";
+    }
+    
+    return rezultat;
+}
+
+console.log(kalkulator(10, 5, "+"));  // 15
+console.log(kalkulator(10, 5, "*"));  // 50
+console.log(kalkulator(10, 0, "/"));  // "Greška: Deljenje sa nulom"</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Kada koristiti switch?</strong>
+                    <p>Koristite switch kada:<br>
+                    - Imate 3+ vrednosti za proveru<br>
+                    - Proveravate tačnu jednakost (===)<br>
+                    - Vrednosti su jasne i konačne<br><br>
+                    Koristite if-else kada:<br>
+                    - Imate složene uslove (>, <, &&, ||)<br>
+                    - Imate samo 1-2 provere</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Meseci",
+                task: "Napravite switch koji prima broj meseca (1-12) i ispisuje naziv meseca.",
+                hint: "case 1: console.log('Januar'); break;",
+                solution: 'const mesec = 6;\n\nswitch (mesec) {\n    case 1: console.log("Januar"); break;\n    case 2: console.log("Februar"); break;\n    case 3: console.log("Mart"); break;\n    case 4: console.log("April"); break;\n    case 5: console.log("Maj"); break;\n    case 6: console.log("Jun"); break;\n    case 7: console.log("Jul"); break;\n    case 8: console.log("Avgust"); break;\n    case 9: console.log("Septembar"); break;\n    case 10: console.log("Oktobar"); break;\n    case 11: console.log("Novembar"); break;\n    case 12: console.log("Decembar"); break;\n    default: console.log("Nevažeći mesec");\n}'
+            }
+        ]
+    },
+    {
+        id: 12,
+        module: "Napredni Koncepti",
+        title: "Math i Brojevi",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Math i Rad sa Brojevima</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Math objekat</h2>
+                <p>JavaScript ima ugrađeni Math objekat sa korisnim matematičkim metodama i konstantama.</p>
+
+                <h3>Math konstante</h3>
+                <pre><code>console.log(Math.PI);     // 3.141592653589793
+console.log(Math.E);      // 2.718281828459045</code></pre>
+
+                <h3>Zaokruživanje brojeva</h3>
+                <pre><code>let broj = 4.7;
+
+console.log(Math.round(broj));   // 5 (najbliži)
+console.log(Math.floor(broj));   // 4 (nadole)
+console.log(Math.ceil(broj));    // 5 (nagore)
+console.log(Math.trunc(broj));   // 4 (ukloni decimale)
+
+// Sa negativnim brojevima
+console.log(Math.floor(-4.7));   // -5
+console.log(Math.ceil(-4.7));    // -4</code></pre>
+
+                <h3>Min, Max, Abs</h3>
+                <pre><code>// Minimum i maximum
+console.log(Math.min(5, 10, 3, 8));   // 3
+console.log(Math.max(5, 10, 3, 8));   // 10
+
+// Apsolutna vrednost (bez znaka)
+console.log(Math.abs(-10));  // 10
+console.log(Math.abs(10));   // 10</code></pre>
+
+                <h3>Stepen i koren</h3>
+                <pre><code>// Stepen
+console.log(Math.pow(2, 3));   // 8 (2³)
+console.log(Math.pow(5, 2));   // 25 (5²)
+
+// Kvadratni koren
+console.log(Math.sqrt(16));    // 4
+console.log(Math.sqrt(25));    // 5
+
+// Kubni koren
+console.log(Math.cbrt(27));    // 3</code></pre>
+
+                <h3>Slučajni brojevi</h3>
+                <pre><code>// Random broj između 0 i 1 (ne uključuje 1)
+console.log(Math.random());  // npr. 0.6374523
+
+// Random broj između 0 i 10
+console.log(Math.random() * 10);
+
+// Random CELI broj između 0 i 10
+console.log(Math.floor(Math.random() * 11));  // 0-10
+
+// Random broj između min i max
+function randomBroj(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(randomBroj(1, 100));  // npr. 47</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Bacanje kockice:</strong>
+                    <pre><code>function bacajKockicu() {
+    return Math.floor(Math.random() * 6) + 1;  // 1-6
+}
+
+console.log("Bacili ste: " + bacajKockicu());
+
+// Bacanje dve kockice
+function bacajDveKockice() {
+    let kockica1 = bacajKockicu();
+    let kockica2 = bacajKockicu();
+    let zbir = kockica1 + kockica2;
+    
+    console.log(\`Kockice: \${kockica1} + \${kockica2} = \${zbir}\`);
+    return zbir;
+}
+
+bacajDveKockice();</code></pre>
+                </div>
+
+                <h3>Konverzija u brojeve</h3>
+                <pre><code>// parseInt - pretvori u ceo broj
+console.log(parseInt("42"));       // 42
+console.log(parseInt("42.5"));     // 42
+console.log(parseInt("42px"));     // 42
+
+// parseFloat - pretvori u decimalni
+console.log(parseFloat("3.14"));   // 3.14
+console.log(parseFloat("3.14abc")); // 3.14
+
+// Number() - pretvori u broj
+console.log(Number("42"));         // 42
+console.log(Number("3.14"));       // 3.14
+console.log(Number("abc"));        // NaN (Not a Number)
+
+// Provera da li je broj
+console.log(isNaN("abc"));         // true
+console.log(isNaN(42));            // false
+console.log(Number.isInteger(42)); // true
+console.log(Number.isInteger(3.14)); // false</code></pre>
+
+                <h3>Formatiranje brojeva</h3>
+                <pre><code>let broj = 123.456789;
+
+// toFixed - fiksiran broj decimala (vraća string)
+console.log(broj.toFixed(2));     // "123.46"
+console.log(broj.toFixed(0));     // "123"
+
+// toPrecision - ukupan broj cifara
+console.log(broj.toPrecision(5)); // "123.46"
+
+// Formatiranje sa hiljadama
+let veliki = 1234567;
+console.log(veliki.toLocaleString()); // "1,234,567"</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Cena sa popustom:</strong>
+                    <pre><code>function izracunajCenu(osnovna, popust) {
+    let cena = osnovna * (1 - popust / 100);
+    return Math.round(cena * 100) / 100;  // Zaokruži na 2 decimale
+}
+
+let osnovna = 1299.99;
+let popust = 15;  // 15%
+
+let novaCena = izracunajCenu(osnovna, popust);
+console.log(\`Originalna cena: \${osnovna} RSD\`);
+console.log(\`Popust: \${popust}%\`);
+console.log(\`Nova cena: \${novaCena.toFixed(2)} RSD\`);</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Rad sa decimalama:</strong>
+                    <p>JavaScript ima probleme sa preciznim decimalnim brojevima:<br>
+                    <code>0.1 + 0.2 = 0.30000000000000004</code><br><br>
+                    Rešenje: Zaokružite rezultate sa <code>toFixed()</code> ili množite/delite sa 100 za rad sa centi/parama.</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Random broj",
+                task: "Napravite funkciju koja vraća slučajan broj između 50 i 100.",
+                hint: "Math.floor(Math.random() * (max - min + 1)) + min",
+                solution: 'function randomIzmedjuPedesetISto() {\n    return Math.floor(Math.random() * 51) + 50;\n}\n\nconsole.log(randomIzmedjuPedesetISto());'
+            },
+            {
+                title: "Vežba 2: Zaokruživanje",
+                task: "Broj 15.678 zaokružite na 2 decimale.",
+                hint: "Koristite toFixed(2) ili Math.round() sa * 100 / 100",
+                solution: 'const broj = 15.678;\nconsole.log(broj.toFixed(2));\n// ili\nconsole.log(Math.round(broj * 100) / 100);'
+            }
+        ]
+    },
+    {
+        id: 13,
+        module: "Napredni Koncepti",
+        title: "Destrukturiranje",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Destrukturiranje (Destructuring)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta je destrukturiranje?</h2>
+                <p>Destrukturiranje je moderan način da izvučete vrednosti iz nizova ili objekata u odvojene promenljive. To čini kod čitljivijim i kraćim.</p>
+
+                <h3>Destrukturiranje nizova</h3>
+                <pre><code>// Stari način
+let brojevi = [1, 2, 3];
+let prvi = brojevi[0];
+let drugi = brojevi[1];
+
+// Novi način (destrukturiranje)
+let [a, b, c] = [1, 2, 3];
+console.log(a);  // 1
+console.log(b);  // 2
+console.log(c);  // 3
+
+// Preskakanje elemenata
+let [prvi, , treci] = [10, 20, 30];
+console.log(prvi);   // 10
+console.log(treci);  // 30
+
+// Ostatak niza (rest operator)
+let [glava, ...rep] = [1, 2, 3, 4, 5];
+console.log(glava);  // 1
+console.log(rep);    // [2, 3, 4, 5]</code></pre>
+
+                <h3>Default vrednosti</h3>
+                <pre><code>let [a = 5, b = 10] = [1];
+console.log(a);  // 1 (ima vrednost)
+console.log(b);  // 10 (default)</code></pre>
+
+                <h3>Zamena promenljivih</h3>
+                <pre><code>let a = 1;
+let b = 2;
+
+// Zamena bez treće promenljive!
+[a, b] = [b, a];
+console.log(a);  // 2
+console.log(b);  // 1</code></pre>
+
+                <h3>Destrukturiranje objekata</h3>
+                <pre><code>// Stari način
+let osoba = {
+    ime: "Marko",
+    godine: 25,
+    grad: "Beograd"
+};
+let ime = osoba.ime;
+let godine = osoba.godine;
+
+// Novi način (destrukturiranje)
+let { ime, godine, grad } = osoba;
+console.log(ime);     // "Marko"
+console.log(godine);  // 25
+console.log(grad);    // "Beograd"
+
+// Redosled nije bitan!
+let { grad: city, ime: name } = osoba;
+console.log(city);  // "Beograd"
+console.log(name);  // "Marko"</code></pre>
+
+                <h3>Novo ime promenljive</h3>
+                <pre><code>let korisnik = {
+    ime: "Ana",
+    godine: 30
+};
+
+// Preimenovanje
+let { ime: korisnickoIme, godine: uzrast } = korisnik;
+console.log(korisnickoIme);  // "Ana"
+console.log(uzrast);         // 30</code></pre>
+
+                <h3>Default vrednosti u objektima</h3>
+                <pre><code>let { ime, godine, grad = "Nepoznat" } = {
+    ime: "Petar",
+    godine: 28
+};
+
+console.log(ime);   // "Petar"
+console.log(godine);// 28
+console.log(grad);  // "Nepoznat" (default)</code></pre>
+
+                <h3>Ugnežđeno destrukturiranje</h3>
+                <pre><code>let korisnik = {
+    ime: "Marko",
+    adresa: {
+        grad: "Beograd",
+        ulica: "Knez Mihailova 15"
+    }
+};
+
+// Izvuci ugnežđene vrednosti
+let { adresa: { grad, ulica } } = korisnik;
+console.log(grad);   // "Beograd"
+console.log(ulica);  // "Knez Mihailova 15"</code></pre>
+
+                <h3>Destrukturiranje u funkcijama</h3>
+                <pre><code>// Parametri kao objekat
+function prikaziKorisnika({ ime, godine, grad }) {
+    console.log(\`\${ime}, \${godine} god, \${grad}\`);
+}
+
+prikaziKorisnika({
+    ime: "Ana",
+    godine: 28,
+    grad: "Niš"
+});
+// Output: "Ana, 28 god, Niš"
+
+// Return više vrednosti
+function getKoordinate() {
+    return [45.25, 19.84];
+}
+
+let [latitude, longitude] = getKoordinate();
+console.log(latitude);   // 45.25
+console.log(longitude);  // 19.84</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - API odgovor:</strong>
+                    <pre><code>// Simulacija API odgovora
+let apiOdgovor = {
+    status: 200,
+    data: {
+        korisnik: {
+            id: 1,
+            ime: "Marko",
+            email: "marko@example.com"
+        },
+        token: "abc123xyz"
+    },
+    timestamp: "2024-01-15"
+};
+
+// Izvuci samo potrebne podatke
+let {
+    status,
+    data: {
+        korisnik: { ime, email },
+        token
+    }
+} = apiOdgovor;
+
+console.log("Status:", status);  // 200
+console.log("Ime:", ime);        // "Marko"
+console.log("Email:", email);    // "marko@example.com"
+console.log("Token:", token);    // "abc123xyz"</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Kada koristiti?</strong>
+                    <p>Destrukturiranje je odlično za:<br>
+                    - Izvlačenje vrednosti iz objekata/nizova<br>
+                    - Parametre funkcija<br>
+                    - API odgovore<br>
+                    - React props (ako kasnije učite React)</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Niz",
+                task: "Iz niza [100, 200, 300, 400] izvucite prve dve vrednosti u promenljive a i b.",
+                hint: "let [a, b] = niz;",
+                solution: 'const brojevi = [100, 200, 300, 400];\nconst [a, b] = brojevi;\nconsole.log(a);  // 100\nconsole.log(b);  // 200'
+            },
+            {
+                title: "Vežba 2: Objekat",
+                task: "Iz objekta {naziv: 'Laptop', cena: 50000} izvucite naziv i cenu.",
+                hint: "let {naziv, cena} = objekat;",
+                solution: 'const proizvod = {naziv: "Laptop", cena: 50000};\nconst {naziv, cena} = proizvod;\nconsole.log(naziv);  // "Laptop"\nconsole.log(cena);   // 50000'
+            }
+        ]
+    },
+    {
+        id: 14,
+        module: "Napredni Koncepti",
+        title: "Spread & Rest Operatori",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Spread & Rest Operatori</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Tri tačke (...)</h2>
+                <p>Operator <code>...</code> (tri tačke) ima dva različita načina upotrebe: <strong>spread</strong> i <strong>rest</strong>. Oba koriste istu sintaksu ali u različitim kontekstima.</p>
+
+                <h3>Spread operator - Širenje niza</h3>
+                <pre><code>let brojevi = [1, 2, 3];
+
+// Širenje niza u listu vrednosti
+console.log(...brojevi);  // 1 2 3
+
+// Kopiranje niza
+let kopija = [...brojevi];
+console.log(kopija);  // [1, 2, 3]
+
+// Spajanje nizova
+let niz1 = [1, 2, 3];
+let niz2 = [4, 5, 6];
+let spojeno = [...niz1, ...niz2];
+console.log(spojeno);  // [1, 2, 3, 4, 5, 6]
+
+// Dodavanje elemenata
+let prosireno = [0, ...brojevi, 4, 5];
+console.log(prosireno);  // [0, 1, 2, 3, 4, 5]</code></pre>
+
+                <h3>Spread sa objektima</h3>
+                <pre><code>let osoba = {
+    ime: "Marko",
+    godine: 25
+};
+
+// Kopiranje objekta
+let kopija = { ...osoba };
+console.log(kopija);  // { ime: "Marko", godine: 25 }
+
+// Spajanje objekata
+let lokacija = {
+    grad: "Beograd",
+    drzava: "Srbija"
+};
+
+let kompletan = { ...osoba, ...lokacija };
+console.log(kompletan);
+// { ime: "Marko", godine: 25, grad: "Beograd", drzava: "Srbija" }
+
+// Izmena svojstava
+let izmenjeno = {
+    ...osoba,
+    godine: 26,  // Override postojeće
+    email: "marko@example.com"  // Dodaj novo
+};
+console.log(izmenjeno);
+// { ime: "Marko", godine: 26, email: "marko@example.com" }</code></pre>
+
+                <h3>Rest operator - Sakupljanje argumenata</h3>
+                <pre><code>// U funkcijama - neograničen broj argumenata
+function saberi(...brojevi) {
+    let suma = 0;
+    for (let broj of brojevi) {
+        suma += broj;
+    }
+    return suma;
+}
+
+console.log(saberi(1, 2, 3));           // 6
+console.log(saberi(1, 2, 3, 4, 5));     // 15
+console.log(saberi(10, 20, 30, 40));    // 100
+
+// Rest mora biti poslednji parametar
+function predstaviSe(ime, prezime, ...hobiji) {
+    console.log(\`Ja sam \${ime} \${prezime}\`);
+    console.log("Hobiji:", hobiji);
+}
+
+predstaviSe("Marko", "Marković", "programiranje", "fudbal", "gitara");
+// Ja sam Marko Marković
+// Hobiji: ["programiranje", "fudbal", "gitara"]</code></pre>
+
+                <h3>Rest u destrukturiranju</h3>
+                <pre><code>// Sa nizovima
+let [prvi, drugi, ...ostali] = [1, 2, 3, 4, 5];
+console.log(prvi);    // 1
+console.log(drugi);   // 2
+console.log(ostali);  // [3, 4, 5]
+
+// Sa objektima
+let korisnik = {
+    ime: "Ana",
+    godine: 30,
+    grad: "Niš",
+    email: "ana@example.com"
+};
+
+let { ime, godine, ...info } = korisnik;
+console.log(ime);    // "Ana"
+console.log(godine); // 30
+console.log(info);   // { grad: "Niš", email: "ana@example.com" }</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Max broj sa spread:</strong>
+                    <pre><code>let brojevi = [5, 12, 8, 130, 44];
+
+// Stari način
+let max1 = Math.max.apply(null, brojevi);
+
+// Novi način sa spread
+let max2 = Math.max(...brojevi);
+console.log(max2);  // 130
+
+// Isto sa min
+let min = Math.min(...brojevi);
+console.log(min);  // 5</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Immutabilnost:</strong>
+                    <pre><code>// Dodavanje u niz bez mutacije
+let lista = [1, 2, 3];
+
+// ❌ Mutira originalni niz
+lista.push(4);
+
+// ✅ Kreira novi niz
+let novaLista = [...lista, 4];
+
+// Izmena objekta bez mutacije
+let korisnik = { ime: "Marko", godine: 25 };
+
+// ❌ Mutira originalni objekat
+korisnik.godine = 26;
+
+// ✅ Kreira novi objekat
+let noviKorisnik = { ...korisnik, godine: 26 };</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Spread vs Rest:</strong>
+                    <p><strong>Spread</strong> = "Raširi" niz/objekat na pojedinačne elemente<br>
+                    <strong>Rest</strong> = "Sakupi" preostale elemente u niz<br><br>
+                    Isti simbol (...), različita upotreba!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Spoj nizove",
+                task: "Spojite nizove [1, 2] i [3, 4] koristeći spread operator.",
+                hint: "let spojeno = [...niz1, ...niz2];",
+                solution: 'const niz1 = [1, 2];\nconst niz2 = [3, 4];\nconst spojeno = [...niz1, ...niz2];\nconsole.log(spojeno);  // [1, 2, 3, 4]'
+            },
+            {
+                title: "Vežba 2: Funkcija sa rest",
+                task: "Napravite funkciju 'pomnozi' koja prima neograničen broj argumenata i vraća njihov proizvod.",
+                hint: "function pomnozi(...brojevi) { ... }",
+                solution: 'function pomnozi(...brojevi) {\n    let proizvod = 1;\n    for (let broj of brojevi) {\n        proizvod *= broj;\n    }\n    return proizvod;\n}\n\nconsole.log(pomnozi(2, 3, 4));  // 24'
+            }
+        ]
+    },
+    {
+        id: 15,
+        module: "Napredni Koncepti",
+        title: "JSON Format",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>JSON (JavaScript Object Notation)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta je JSON?</h2>
+                <p>JSON je format za čuvanje i prenos podataka. Izgleda kao JavaScript objekat, ali je zapravo tekst. Koristi se za API-je, konfiguraciju, i čuvanje podataka.</p>
+
+                <h3>JSON sintaksa</h3>
+                <pre><code>// JavaScript objekat
+let korisnik = {
+    ime: "Marko",
+    godine: 25,
+    aktivan: true
+};
+
+// JSON string (tekst)
+let jsonString = '{"ime":"Marko","godine":25,"aktivan":true}';</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Pravila JSON sintakse:</strong>
+                    <p>- Ključevi MORAJU biti u dvostrukim navodnicima<br>
+                    - Stringovi MORAJU biti u dvostrukim navodnicima<br>
+                    - Nema function, undefined, ili Date objekata<br>
+                    - Nema komentara</p>
+                </div>
+
+                <h3>JSON.stringify() - Objekat u JSON</h3>
+                <pre><code>let osoba = {
+    ime: "Ana",
+    godine: 28,
+    grad: "Beograd",
+    hobiji: ["čitanje", "trčanje"]
+};
+
+// Konvertuj u JSON string
+let json = JSON.stringify(osoba);
+console.log(json);
+// '{"ime":"Ana","godine":28,"grad":"Beograd","hobiji":["čitanje","trčanje"]}'
+
+console.log(typeof json);  // "string"
+
+// Sa formatiranjem (prettier)
+let formatiran = JSON.stringify(osoba, null, 2);
+console.log(formatiran);
+/*
+{
+  "ime": "Ana",
+  "godine": 28,
+  "grad": "Beograd",
+  "hobiji": [
+    "čitanje",
+    "trčanje"
+  ]
+}
+*/</code></pre>
+
+                <h3>JSON.parse() - JSON u Objekat</h3>
+                <pre><code>let jsonString = '{"ime":"Marko","godine":25,"grad":"Niš"}';
+
+// Konvertuj JSON string u objekat
+let objekat = JSON.parse(jsonString);
+console.log(objekat);
+// { ime: "Marko", godine: 25, grad: "Niš" }
+
+console.log(typeof objekat);  // "object"
+console.log(objekat.ime);     // "Marko"</code></pre>
+
+                <h3>Rad sa nizovima</h3>
+                <pre><code>let proizvodi = [
+    { id: 1, naziv: "Laptop", cena: 50000 },
+    { id: 2, naziv: "Miš", cena: 1500 },
+    { id: 3, naziv: "Tastatura", cena: 3000 }
+];
+
+// U JSON
+let json = JSON.stringify(proizvodi);
+console.log(json);
+
+// Iz JSON-a
+let nazad = JSON.parse(json);
+console.log(nazad[0].naziv);  // "Laptop"</code></pre>
+
+                <h3>Greške pri parsiranju</h3>
+                <pre><code>// Nevažeći JSON
+let losJSON = "{ime: 'Marko'}";  // ❌ Nema navodnika oko ključa
+
+try {
+    let objekat = JSON.parse(losJSON);
+} catch (error) {
+    console.log("Greška:", error.message);
+    // "Unexpected token i in JSON at position 1"
+}
+
+// Važeći JSON
+let dobarJSON = '{"ime":"Marko"}';  // ✅
+let objekat = JSON.parse(dobarJSON);
+console.log(objekat.ime);  // "Marko"</code></pre>
+
+                <h3>LocalStorage sa JSON</h3>
+                <pre><code>// LocalStorage čuva samo stringove
+// Koristimo JSON za čuvanje objekata
+
+let korisnik = {
+    ime: "Marko",
+    poeni: 150,
+    nivo: 5
+};
+
+// Čuvanje
+localStorage.setItem('korisnik', JSON.stringify(korisnik));
+
+// Učitavanje
+let ucitano = localStorage.getItem('korisnik');
+let korisnikObjekat = JSON.parse(ucitano);
+
+console.log(korisnikObjekat.ime);   // "Marko"
+console.log(korisnikObjekat.poeni); // 150</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Čuvanje liste zadataka:</strong>
+                    <pre><code>// To-Do aplikacija
+let zadaci = [
+    { id: 1, tekst: "Učiti JavaScript", zavrsen: false },
+    { id: 2, tekst: "Vežbati kod", zavrsen: true },
+    { id: 3, tekst: "Napraviti projekat", zavrsen: false }
+];
+
+// Sačuvaj u localStorage
+function sačuvajZadatke() {
+    localStorage.setItem('zadaci', JSON.stringify(zadaci));
+}
+
+// Učitaj iz localStorage
+function ucitajZadatke() {
+    let json = localStorage.getItem('zadaci');
+    if (json) {
+        return JSON.parse(json);
+    }
+    return [];  // Prazan niz ako nema podataka
+}
+
+// Korišćenje
+sačuvajZadatke();
+let ucitaniZadaci = ucitajZadatke();
+console.log(ucitaniZadaci);</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Česta upotreba JSON-a:</strong>
+                    <p>- API komunikacija (slanje/primanje podataka)<br>
+                    - LocalStorage (čuvanje objekata)<br>
+                    - Konfiguracioni fajlovi (package.json)<br>
+                    - Data export/import</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Stringify",
+                task: "Kreirajte objekat sa vašim imenom, godinama i gradom, pa ga konvertujte u JSON string.",
+                hint: "JSON.stringify(objekat)",
+                solution: 'const ja = {\n    ime: "Nemanja",\n    godine: 25,\n    grad: "Beograd"\n};\n\nconst json = JSON.stringify(ja);\nconsole.log(json);'
+            },
+            {
+                title: "Vežba 2: Parse",
+                task: "Parsujte JSON string '{\"broj\":42,\"tekst\":\"Hello\"}' i ispišite vrednost 'broj'.",
+                hint: "JSON.parse(string)",
+                solution: 'const jsonString = \'{"broj":42,"tekst":"Hello"}\';\nconst objekat = JSON.parse(jsonString);\nconsole.log(objekat.broj);  // 42'
+            }
+        ]
+    },
+    {
+        id: 16,
+        module: "Napredni Koncepti",
+        title: "Arrow Functions",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Arrow Functions (Strelaste Funkcije)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta su Arrow Functions?</h2>
+                <p>Arrow funkcije su kraća sintaksa za pisanje funkcija, uvedene u ES6. Koriste <code>=></code> simbol (strelicu).</p>
+
+                <h3>Osnovna sintaksa</h3>
+                <pre><code>// Obična funkcija
+function saberi(a, b) {
+    return a + b;
+}
+
+// Arrow funkcija
+const saberi = (a, b) => {
+    return a + b;
+};
+
+// Još kraća (implicitni return)
+const saberi = (a, b) => a + b;
+
+console.log(saberi(5, 3));  // 8</code></pre>
+
+                <h3>Različite varijante</h3>
+                <pre><code>// Bez parametara
+const pozdrav = () => console.log("Zdravo!");
+pozdrav();  // "Zdravo!"
+
+// Jedan parametar (bez zagrada)
+const kvadrat = x => x * x;
+console.log(kvadrat(5));  // 25
+
+// Dva ili više parametara (sa zagradama)
+const saberi = (a, b) => a + b;
+console.log(saberi(10, 20));  // 30
+
+// Više linija koda (sa vitičastim zagradama)
+const proveriGodine = godine => {
+    if (godine >= 18) {
+        return "Punoletan";
+    } else {
+        return "Maloletan";
+    }
+};
+console.log(proveriGodine(25));  // "Punoletan"
+
+// Vraćanje objekta (mora u zagrade!)
+const napraviOsobu = (ime, godine) => ({ ime: ime, godine: godine });
+console.log(napraviOsobu("Marko", 25));  // { ime: "Marko", godine: 25 }</code></pre>
+
+                <h3>Sa nizovima - čitljivije!</h3>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// Obične funkcije
+brojevi.map(function(x) { return x * 2; });
+brojevi.filter(function(x) { return x > 2; });
+
+// Arrow funkcije (mnogo kraće!)
+brojevi.map(x => x * 2);         // [2, 4, 6, 8, 10]
+brojevi.filter(x => x > 2);      // [3, 4, 5]
+brojevi.reduce((a, b) => a + b); // 15
+
+// Kombinacija
+let rezultat = brojevi
+    .filter(x => x % 2 === 0)  // Parni
+    .map(x => x * 3);           // Pomnoženi sa 3
+console.log(rezultat);  // [6, 12]</code></pre>
+
+                <h3>this kontekst - važna razlika!</h3>
+                <pre><code>// Obična funkcija - ima svoj 'this'
+let osoba1 = {
+    ime: "Marko",
+    godine: 25,
+    predstaviSeObicno: function() {
+        setTimeout(function() {
+            console.log("Ja sam " + this.ime);  // ❌ undefined
+        }, 1000);
+    }
+};
+
+// Arrow funkcija - NE menja 'this'
+let osoba2 = {
+    ime: "Ana",
+    godine: 28,
+    predstaviSeArrow: function() {
+        setTimeout(() => {
+            console.log("Ja sam " + this.ime);  // ✅ "Ana"
+        }, 1000);
+    }
+};
+
+osoba2.predstaviSeArrow();  // "Ja sam Ana" (posle 1s)</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Kada NE koristiti arrow funkcije:</strong>
+                    <p>- Kao metode objekta (gube this kontekst)<br>
+                    - Kada vam treba arguments objekat<br>
+                    - Kao konstruktor funkcije (ne mogu se koristiti sa new)</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Filtriranje korisnika:</strong>
+                    <pre><code>let korisnici = [
+    { ime: "Marko", godine: 17, aktivan: true },
+    { ime: "Ana", godine: 25, aktivan: false },
+    { ime: "Petar", godine: 30, aktivan: true },
+    { ime: "Jovana", godine: 22, aktivan: true }
+];
+
+// Filtriraj punolente i aktivne
+let aktivniPunoleti = korisnici
+    .filter(k => k.godine >= 18)
+    .filter(k => k.aktivan)
+    .map(k => k.ime);
+
+console.log(aktivniPunoleti);  // ["Ana", "Petar", "Jovana"]
+
+// Prosečne godine aktivnih
+let prosek = korisnici
+    .filter(k => k.aktivan)
+    .map(k => k.godine)
+    .reduce((suma, g) => suma + g, 0) / 
+    korisnici.filter(k => k.aktivan).length;
+
+console.log(prosek);  // 23</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Sortiranje proizvoda:</strong>
+                    <pre><code>let proizvodi = [
+    { naziv: "Laptop", cena: 50000 },
+    { naziv: "Miš", cena: 1500 },
+    { naziv: "Tastatura", cena: 3000 },
+    { naziv: "Monitor", cena: 20000 }
+];
+
+// Sortiraj po ceni (rastuće)
+proizvodi.sort((a, b) => a.cena - b.cena);
+
+// Proizvodi jeftiniji od 10000 RSD
+let jeftini = proizvodi.filter(p => p.cena < 10000);
+console.log(jeftini.map(p => p.naziv));  // ["Miš", "Tastatura"]
+
+// Dodaj PDV (20%)
+let saPDV = proizvodi.map(p => ({
+    ...p,
+    cenaSaPDV: p.cena * 1.2
+}));
+console.log(saPDV);</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Best practices:</strong>
+                    <p>- Koristite arrow funkcije za callback-ove (map, filter, forEach)<br>
+                    - Koristite obične funkcije za metode objekata<br>
+                    - Budite konzistentni u stilu pisanja<br>
+                    - Kraće nije uvek bolje - čitljivost je važna!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Konverzija",
+                task: "Konvertujte funkciju 'function pomnozi(a, b) { return a * b; }' u arrow funkciju.",
+                hint: "const pomnozi = (a, b) => a * b;",
+                solution: 'const pomnozi = (a, b) => a * b;\nconsole.log(pomnozi(5, 4));  // 20'
+            },
+            {
+                title: "Vežba 2: Filtriranje",
+                task: "Iz niza [10, 15, 20, 25, 30] filtrirajte brojeve veće od 20 koristeći arrow funkciju.",
+                hint: "niz.filter(x => x > 20)",
+                solution: 'const brojevi = [10, 15, 20, 25, 30];\nconst veci = brojevi.filter(x => x > 20);\nconsole.log(veci);  // [25, 30]'
+            }
+        ]
+    },
+    {
+        id: 17,
+        module: "Napredni Koncepti",
+        title: "Ternary Operator",
+        duration: "15 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Ternary Operator (Uslovni Operator)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 15 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta je Ternary operator?</h2>
+                <p>Ternary operator je kraći način pisanja if-else naredbe. Koristi <code>?</code> i <code>:</code> za uslovnu logiku u jednoj liniji.</p>
+
+                <h3>Osnovna sintaksa</h3>
+                <pre><code>// Klasičan if-else
+let godine = 20;
+let status;
+if (godine >= 18) {
+    status = "Punoletan";
+} else {
+    status = "Maloletan";
+}
+
+// Ternary operator (kraće)
+let status = godine >= 18 ? "Punoletan" : "Maloletan";
+
+// Sintaksa: uslov ? vrednostAkoJeTacno : vrednostAkoJeNetacno</code></pre>
+
+                <h3>Primeri upotrebe</h3>
+                <pre><code>let broj = 10;
+
+// Parnost
+let parnost = broj % 2 === 0 ? "Paran" : "Neparan";
+console.log(parnost);  // "Paran"
+
+// Poruka
+let poeni = 85;
+let poruka = poeni >= 50 ? "Položio" : "Pao";
+console.log(poruka);  // "Položio"
+
+//Max broj
+let a = 15, b = 20;
+let max = a > b ? a : b;
+console.log(max);  // 20
+
+// Validacija
+let korisnickoIme = "Marko";
+let validno = korisnickoIme.length >= 3 ? true : false;
+console.log(validno);  // true</code></pre>
+
+                <h3>Ugnežđeni ternary (pažljivo!)</h3>
+                <pre><code>let ocena = 85;
+
+// Ugnežđeni ternary
+let rezultat = ocena >= 90 ? "A" :
+               ocena >= 80 ? "B" :
+               ocena >= 70 ? "C" :
+               ocena >= 60 ? "D" : "F";
+
+console.log(rezultat);  // "B"
+
+// Ali čitljivije je sa if-else ili switch!
+if (ocena >= 90) rezultat = "A";
+else if (ocena >= 80) rezultat = "B";
+else if (ocena >= 70) rezultat = "C";
+else if (ocena >= 60) rezultat = "D";
+else rezultat = "F";</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Ne preterivati!</strong>
+                    <p>Ugnežđeni ternary operatori mogu biti teški za čitanje. Ako imate više od 1-2 nivoa, koristite if-else.</p>
+                </div>
+
+                <h3>Sa funkcijama</h3>
+                <pre><code>// Uslovni return
+const apsolutnaVrednost = n => n >= 0 ? n : -n;
+console.log(apsolutnaVrednost(-5));  // 5
+
+// Uslovni poziv funkcije
+const broj = 10;
+broj % 2 === 0 ? console.log("Paran") : console.log("Neparan");
+
+// Dodela vrednosti
+const popust = cena > 10000 ? cena * 0.1 : 0;
+console.log(\`Popust: \${popust} RSD\`);</code></pre>
+
+                <h3>Sa React/JSX (budućnost!)</h3>
+                <pre><code>// Časot se koristi u React-u
+const prikaziDugme = ulogovan ? 
+    "<button>Odjavi se</button>" : 
+    "<button>Prijavi se</button>";
+
+// Uslovni className
+const klasa = aktivan ? "btn btn-active" : "btn btn-inactive";</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Status narudžbine:</strong>
+                    <pre><code>function getStatusPoruka(status) {
+    return status === "pending" ? "⏳ Čeka se..." :
+           status === "shipped" ? "🚚 Poslato" :
+           status === "delivered" ? "✅ Dostavljeno" :
+           "❌ Nepoznat status";
+}
+
+console.log(getStatusPoruka("shipped"));    // "🚚 Poslato"
+console.log(getStatusPoruka("delivered"));  // "✅ Dostavljeno"</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Formatiranje vremena:</strong>
+                    <pre><code>function formatirajVreme(sati, minuti) {
+    let period = sati >= 12 ? "PM" : "AM";
+    let sati12 = sati > 12 ? sati - 12 : (sati === 0 ? 12 : sati);
+    let minStr = minuti < 10 ? "0" + minuti : minuti;
+    
+    return \`\${sati12}:\${minStr} \${period}\`;
+}
+
+console.log(formatirajVreme(14, 5));   // "2:05 PM"
+console.log(formatirajVreme(9, 30));   // "9:30 AM"
+console.log(formatirajVreme(0, 15));   // "12:15 AM"</code></pre>
+                </div>
+
+                <h3>Ternary vs if-else</h3>
+                <pre><code>// ✅ DOBRO - jednostavan uslov
+const popust = cena > 5000 ? 10 : 0;
+
+// ✅ DOBRO - dodela vrednosti
+const poruka = greska ? "Greška!" : "Uspeh!";
+
+// ❌ LOŠE - previše komplikovano
+const rezultat = a > b ? (c > d ? e : f) : (g > h ? i : j);
+
+// ✅ BOLJE - koristite if-else
+let rezultat;
+if (a > b) {
+    rezultat = c > d ? e : f;
+} else {
+    rezultat = g > h ? i : j;
+}</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 Kada koristiti ternary?</strong>
+                    <p>- Za jednostavne if-else situacije<br>
+                    - Kad dodeljujete vrednost promenljivoj<br>
+                    - Kad vraćate vrednost iz funkcije<br>
+                    - Za JSX u React-u<br><br>
+                    NE koristite za složenu logiku ili side-effects!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Par/Nepar",
+                task: "Napišite ternary operator koji proverava da li je broj 15 paran ili neparan.",
+                hint: "broj % 2 === 0 ? 'Paran' : 'Neparan'",
+                solution: 'const broj = 15;\nconst parnost = broj % 2 === 0 ? "Paran" : "Neparan";\nconsole.log(parnost);  // "Neparan"'
+            },
+            {
+                title: "Vežba 2: Popust",
+                task: "Napravite funkciju koja vraća cenu sa popustom: 10% ako je cena > 10000, inače 0%.",
+                hint: "cena > 10000 ? cena * 0.9 : cena",
+                solution: 'const izracunajCenu = cena => cena > 10000 ? cena * 0.9 : cena;\n\nconsole.log(izracunajCenu(15000));  // 13500\nconsole.log(izracunajCenu(5000));   // 5000'
+            }
+        ]
+    },
+    {
+        id: 18,
+        module: "Napredni Koncepti",
+        title: "Template Literals",
+        duration: "15 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Template Literals (Template Strings)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 15 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta su Template Literals?</h2>
+                <p>Template literals su moderni način pisanja stringova u JavaScript-u. Koriste <strong>backtick</strong> znake (\`) umesto navodnika i omogućavaju interpolaciju promenljivih i višelinijski tekst.</p>
+
+                <h3>Osnovna upotreba</h3>
+                <pre><code>// Obični stringovi
+let ime = "Marko";
+let poruka1 = "Zdravo, " + ime + "!";
+
+// Template literals
+let poruka2 = \`Zdravo, \${ime}!\`;
+
+console.log(poruka2);  // "Zdravo, Marko!"</code></pre>
+
+                <h3>Interpolacija promenljivih</h3>
+                <pre><code>let ime = "Ana";
+let godine = 25;
+let grad = "Beograd";
+
+// Stari način
+let opis1 = "Ja sam " + ime + ", imam " + godine + " godina i živim u " + grad + ".";
+
+// Template literals (mnogo čitljivije!)
+let opis2 = \`Ja sam \${ime}, imam \${godine} godina i živim u \${grad}.\`;
+
+console.log(opis2);
+// "Ja sam Ana, imam 25 godina i živim u Beograd."</code></pre>
+
+                <h3>Izrazi u template literals</h3>
+                <pre><code>let a = 10;
+let b = 20;
+
+// Možete izvršavati izraze
+console.log(\`Zbir: \${a + b}\`);              // "Zbir: 30"
+console.log(\`Proizvod: \${a * b}\`);          // "Proizvod: 200"
+console.log(\`Veći broj: \${a > b ? a : b}\`); // "Veći broj: 20"
+
+// Poziv funkcije
+function pozdrav(ime) {
+    return \`Zdravo, \${ime}!\`;
+}
+console.log(\`Poruka: \${pozdrav("Marko")}\`);
+// "Poruka: Zdravo, Marko!"</code></pre>
+
+                <h3>Višelinijski stringovi</h3>
+                <pre><code>// Stari način (sa \n)
+let tekst1 = "Prva linija\nDruga linija\nTreća linija";
+
+// Template literals (prirodno!)
+let tekst2 = \`Prva linija
+Druga linija
+Treća linija\`;
+
+console.log(tekst2);
+/*
+Prva linija
+Druga linija
+Treća linija
+*/</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - HTML template:</strong>
+                    <pre><code>function napraviKarticu(naziv, cena, opis) {
+    return \`
+        <div class="kartica">
+            <h2>\${naziv}</h2>
+            <p class="cena">\${cena} RSD</p>
+            <p class="opis">\${opis}</p>
+            <button>Dodaj u korpu</button>
+        </div>
+    \`;
+}
+
+let kartica = napraviKarticu("Laptop", 50000, "Dell XPS 13");
+console.log(kartica);</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Formatiranje poruke:</strong>
+                    <pre><code>let narudzbina = {
+    id: 1234,
+    proizvod: "Laptop",
+    kolicina: 2,
+    cena: 50000,
+    status: "shipped"
+};
+
+let poruka = \`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 NARUDŽBINA #\${narudzbina.id}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Proizvod: \${narudzbina.proizvod}
+Količina: \${narudzbina.kolicina}x
+Cena: \${narudzbina.cena * narudzbina.kolicina} RSD
+Status: \${narudzbina.status === "shipped" ? "🚚 Poslato" : "⏳ U procesu"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+\`;
+
+console.log(poruka);</code></pre>
+                </div>
+
+                <h3>Tagged templates (naprednije)</h3>
+                <pre><code>// Funkcija koja procesira template
+function highlight(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        return result + str + (values[i] ? \`<mark>\${values[i]}</mark>\` : '');
+    }, '');
+}
+
+let ime = "Marko";
+let grad = "Beograd";
+let rezultat = highlight\`Živim u \${grad}, zovem se \${ime}.\`;
+
+console.log(rezultat);
+// "Živim u <mark>Beograd</mark>, zovem se <mark>Marko</mark>."</code></pre>
+
+                <h3>Escape backtick</h3>
+                <pre><code>// Ako vam treba backtick u template literal-u
+let tekst = \`Ovo je backtick: \\\`\`;
+console.log(tekst);  // "Ovo je backtick: \`"</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 Prednosti Template Literals:</strong>
+                    <p>- ✅ Čitljiviji kod<br>
+                    - ✅ Interpolacija promenljivih<br>
+                    - ✅ Višelinijski stringovi<br>
+                    - ✅ Izvršavanje izraza<br>
+                    - ✅ Dinamički HTML<br><br>
+                    UVEK koristite template literals umesto konkatenacije stringova!</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Interpolacija",
+                task: "Napravite promenljive ime='Petar', godine=30, grad='Niš' i napišite template literal koji ih ispisuje u rečenici.",
+                hint: "`Ja sam ${ime}, imam ${godine} godina.`",
+                solution: 'const ime = "Petar";\nconst godine = 30;\nconst grad = "Niš";\n\nconst recenica = \`Ja sam \${ime}, imam \${godine} godina i živim u \${grad}.\`;\nconsole.log(recenica);'
+            },
+            {
+                title: "Vežba 2: Račun",
+                task: "Napravite funkciju koja prima količinu i cenu, pa vraća poruku: 'Ukupno: X RSD (Y kom x Z RSD)'",
+                hint: "return `Ukupno: ${kolicina * cena} RSD (${kolicina} kom x ${cena} RSD)`;",
+                solution: 'function racun(kolicina, cena) {\n    return \`Ukupno: \${kolicina * cena} RSD (\${kolicina} kom x \${cena} RSD)\`;\n}\n\nconsole.log(racun(3, 500));  // "Ukupno: 1500 RSD (3 kom x 500 RSD)"'
+            }
+        ]
+    },
+    {
+        id: 19,
+        module: "Napredni Koncepti",
+        title: "setTimeout & setInterval",
+        duration: "20 min",
+        content: `
+            <div class="lesson-header">
+                <h1>setTimeout & setInterval (Tajmeri)</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 20 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Asinhrono izvršavanje koda</h2>
+                <p>JavaScript ima funkcije za izvršavanje koda sa vremenskim kašnjenjem ili u intervalima.</p>
+
+                <h3>setTimeout() - Jednokratno izvršavanje</h3>
+                <pre><code>// Osnovna sintaksa
+setTimeout(funkcija, vreme_u_milisekundama);
+
+// Primer
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Ovo se izvršava posle 2 sekunde");
+}, 2000);
+
+console.log("Kraj");
+
+// Output:
+// Start
+// Kraj
+// Ovo se izvršava posle 2 sekunde (posle 2s)</code></pre>
+
+                <h3>setTimeout sa parametrima</h3>
+                <pre><code>function pozdrav(ime, grad) {
+    console.log(\`Zdravo \${ime} iz \${grad}!\`);
+}
+
+// Parametri posle vremena
+setTimeout(pozdrav, 1000, "Marko", "Beograd");
+// Posle 1s: "Zdravo Marko iz Beograd!"</code></pre>
+
+                <h3>Zaustavljanje setTimeout</h3>
+                <pre><code>// Čuvanje timeout ID-a
+let timeoutId = setTimeout(() => {
+    console.log("Ovo se neće izvršiti");
+}, 3000);
+
+// Zaustavljanje
+clearTimeout(timeoutId);
+console.log("Timeout zaustavljen!");</code></pre>
+
+                <h3>setInterval() - Ponavljano izvršavanje</h3>
+                <pre><code>// Izvršava se svakih N milisekundi
+let brojac = 0;
+
+let intervalId = setInterval(() => {
+    brojac++;
+    console.log(\`Prošlo je \${brojac} sekundi\`);
+}, 1000);
+
+// Output (svakih 1s):
+// Prošlo je 1 sekundi
+// Prošlo je 2 sekundi
+// Prošlo je 3 sekundi
+// ...</code></pre>
+
+                <h3>Zaustavljanje setInterval</h3>
+                <pre><code>let brojac = 0;
+
+let intervalId = setInterval(() => {
+    brojac++;
+    console.log(brojac);
+    
+    // Zaustavi posle 5 sekundi
+    if (brojac === 5) {
+        clearInterval(intervalId);
+        console.log("Interval zaustavljen!");
+    }
+}, 1000);</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Countdown tajmer:</strong>
+                    <pre><code>function countdown(sekunde) {
+    console.log(\`Start: \${sekunde}s\`);
+    
+    let intervalId = setInterval(() => {
+        sekunde--;
+        
+        if (sekunde > 0) {
+            console.log(\`\${sekunde}s...\`);
+        } else {
+            console.log("⏰ Vreme je isteklo!");
+            clearInterval(intervalId);
+        }
+    }, 1000);
+}
+
+countdown(5);
+// Start: 5s
+// 4s...
+// 3s...
+// 2s...
+// 1s...
+// ⏰ Vreme je isteklo!</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Digitalni sat:</strong>
+                    <pre><code>function digitalniSat() {
+    setInterval(() => {
+        let sada = new Date();
+        let sati = String(sada.getHours()).padStart(2, '0');
+        let minuti = String(sada.getMinutes()).padStart(2, '0');
+        let sekunde = String(sada.getSeconds()).padStart(2, '0');
+        
+        console.log(\`\${sati}:\${minuti}:\${sekunde}\`);
+    }, 1000);
+}
+
+digitalniSat();
+// 14:23:45
+// 14:23:46
+// 14:23:47
+// ...</code></pre>
+                </div>
+
+                <h3>Razlika: setTimeout vs setInterval</h3>
+                <pre><code>// setTimeout - JEDNOM posle kašnjenja
+setTimeout(() => console.log("Ovo se izvršava samo JEDNOM"), 1000);
+
+// setInterval - STALNO na svakih N ms
+let id = setInterval(() => console.log("Ovo se ponavlja"), 1000);
+// Treba ručno zaustaviti sa clearInterval(id)</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Animacija loading-a:</strong>
+                    <pre><code>function loading() {
+    let dots = '';
+    let brojac = 0;
+    
+    let intervalId = setInterval(() => {
+        brojac++;
+        dots += '.';
+        
+        if (dots.length > 3) dots = '';
+        
+        console.clear();  // Očisti konzolu
+        console.log(\`Loading\${dots}\`);
+        
+        // Zaustavi posle 10s
+        if (brojac >= 10) {
+            clearInterval(intervalId);
+            console.log("✅ Učitano!");
+        }
+    }, 500);
+}
+
+loading();
+// Loading.
+// Loading..
+// Loading...
+// Loading
+// ... (10s)
+// ✅ Učitano!</code></pre>
+                </div>
+
+                <h3>Asinhronost - Važno!</h3>
+                <pre><code>console.log("1");
+
+setTimeout(() => {
+    console.log("2");
+}, 0);  // Čak i sa 0ms!
+
+console.log("3");
+
+// Output:
+// 1
+// 3
+// 2
+
+// Zašto? setTimeout je UVEK asinhroni,
+// čak i sa 0ms odložio izvršavanje!</code></pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Česte greške:</strong>
+                    <p>- Zaboravljanje clearInterval (beskonačno izvršavanje!)<br>
+                    - Korišćenje \`setInterval(() => { ... }, 1000)()\` - NE pozivajte funkciju!<br>
+                    - Memorijske curenje ako ne očistite intervale pri unmount-u komponente</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Kada koristiti?</strong>
+                    <p><strong>setTimeout</strong>:<br>
+                    - Kašnjenje izvršavanja koda<br>
+                    - Debouncing (odloženo pretraživanje)<br>
+                    - Animacije sa vremenskim razmakom<br><br>
+                    <strong>setInterval</strong>:<br>
+                    - Satovi, tajmeri<br>
+                    - Polling (provera servera)<br>
+                    - Animacije (ali requestAnimationFrame je bolje!)</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Timeout",
+                task: "Napravite setTimeout koji posle 3 sekunde ispisuje 'Prošle su 3 sekunde'.",
+                hint: "setTimeout(() => { ... }, 3000);",
+                solution: 'setTimeout(() => {\n    console.log("Prošle su 3 sekunde");\n}, 3000);'
+            },
+            {
+                title: "Vežba 2: Interval sa zaustavljanjem",
+                task: "Napravite interval koji broji od 1 do 5 (svakih 1s), pa se zaustavlja.",
+                hint: "setInterval + if (broj === 5) clearInterval(id)",
+                solution: 'let broj = 0;\nconst id = setInterval(() => {\n    broj++;\n    console.log(broj);\n    \n    if (broj === 5) {\n        clearInterval(id);\n        console.log("Gotovo!");\n    }\n}, 1000);'
+            }
+        ]
+    },
+    {
+        id: 20,
+        module: "Napredni Koncepti",
+        title: "Callback Functions",
+        duration: "25 min",
+        content: `
+            <div class="lesson-header">
+                <h1>Callback Functions</h1>
+                <p class="lesson-meta">Modul 6 - Napredni Koncepti • 25 minuta</p>
+            </div>
+            <div class="lesson-content">
+                <h2>Šta su Callback funkcije?</h2>
+                <p>Callback je funkcija koja se prosleđuje drugoj funkciji kao argument, i izvršava se KASNIJE. Ovo je osnova asinhronog programiranja u JavaScript-u.</p>
+
+                <h3>Osnovna ideja</h3>
+                <pre><code>// Obična funkcija
+function pozdrav(ime) {
+    console.log(\`Zdravo, \${ime}!\`);
+}
+
+// Funkcija koja prima callback
+function izvrsiCallback(callback) {
+    let ime = "Marko";
+    callback(ime);  // Poziv callback funkcije
+}
+
+izvrsiCallback(pozdrav);  // "Zdravo, Marko!"</code></pre>
+
+                <h3>Inline callback funkcije</h3>
+                <pre><code>function izvrsiCallback(callback) {
+    callback("Ana");
+}
+
+// Callback kao anonimna funkcija
+izvrsiCallback(function(ime) {
+    console.log(\`Ćao, \${ime}!\`);
+});
+
+// Callback kao arrow funkcija
+izvrsiCallback(ime => {
+    console.log(\`Hej, \${ime}!\`);
+});</code></pre>
+
+                <h3>Callback sa array metodama</h3>
+                <pre><code>let brojevi = [1, 2, 3, 4, 5];
+
+// forEach prima callback
+brojevi.forEach(function(broj) {
+    console.log(broj * 2);
+});
+
+// map prima callback
+let kvadrati = brojevi.map(broj => broj * broj);
+console.log(kvadrati);  // [1, 4, 9, 16, 25]
+
+// filter prima callback
+let parni = brojevi.filter(broj => broj % 2 === 0);
+console.log(parni);  // [2, 4]</code></pre>
+
+                <h3>Callback sa više argumenata</h3>
+                <pre><code>function obradiKorisnike(korisnici, callback) {
+    korisnici.forEach((korisnik, index) => {
+        callback(korisnik, index);
+    });
+}
+
+let korisnici = ["Marko", "Ana", "Petar"];
+
+obradiKorisnike(korisnici, (ime, pozicija) => {
+    console.log(\`\${pozicija + 1}. \${ime}\`);
+});
+// 1. Marko
+// 2. Ana
+// 3. Petar</code></pre>
+
+                <h3>Asinhroni callback-ovi</h3>
+                <pre><code>// setTimeout sa callback-om
+function pozdraviPosle(ime, callback) {
+    console.log("Priprema...");
+    
+    setTimeout(() => {
+        callback(ime);
+    }, 2000);
+}
+
+pozdraviPosle("Marko", ime => {
+    console.log(\`Zdravo, \${ime}!\`);
+});
+
+// Output:
+// Priprema... (odmah)
+// Zdravo, Marko! (posle 2s)</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Filtriranje i formatiranje:</strong>
+                    <pre><code>let proizvodi = [
+    { naziv: "Laptop", cena: 50000, aktivan: true },
+    { naziv: "Miš", cena: 1500, aktivan: false },
+    { naziv: "Tastatura", cena: 3000, aktivan: true }
+];
+
+function obradiProizvode(lista, filter, formatter) {
+    return lista
+        .filter(filter)        // Callback 1
+        .map(formatter);       // Callback 2
+}
+
+let rezultat = obradiProizvode(
+    proizvodi,
+    p => p.aktivan,                    // Filter callback
+    p => \`\${p.naziv}: \${p.cena} RSD\`  // Format callback
+);
+
+console.log(rezultat);
+// ["Laptop: 50000 RSD", "Tastatura: 3000 RSD"]</code></pre>
+                </div>
+
+                <h3>Callback Hell (problem!)</h3>
+                <pre><code>// ❌ Loše - ugnežđeni callback-ovi
+function prviKorak(callback) {
+    setTimeout(() => {
+        console.log("Korak 1");
+        callback();
+    }, 1000);
+}
+
+prviKorak(() => {
+    setTimeout(() => {
+        console.log("Korak 2");
+        setTimeout(() => {
+            console.log("Korak 3");
+            setTimeout(() => {
+                console.log("Korak 4");
+            }, 1000);
+        }, 1000);
+    }, 1000);
+});
+
+// Ovo se zove "Callback Hell" ili "Pyramid of Doom"
+// Rešenje: Promises ili async/await (sledeća lekcija!)</code></pre>
+
+                <div class="example-box">
+                    <strong>📝 Praktičan primer - Validacija forme:</strong>
+                    <pre><code>function validirajFormu(podaci, successCallback, errorCallback) {
+    let greske = [];
+    
+    if (!podaci.ime || podaci.ime.length < 3) {
+        greske.push("Ime mora imati najmanje 3 karaktera");
+    }
+    
+    if (!podaci.email.includes("@")) {
+        greske.push("Email mora sadržati @");
+    }
+    
+    if (podaci.godine < 18) {
+        greske.push("Morate biti punoleti");
+    }
+    
+    if (greske.length === 0) {
+        successCallback(podaci);
+    } else {
+        errorCallback(greske);
+    }
+}
+
+// Upotreba
+let formData = {
+    ime: "Marko",
+    email: "marko@example.com",
+    godine: 25
+};
+
+validirajFormu(
+    formData,
+    podaci => {
+        console.log("✅ Uspešno!", podaci);
+    },
+    greske => {
+        console.log("❌ Greške:");
+        greske.forEach(g => console.log("  - " + g));
+    }
+);</code></pre>
+                </div>
+
+                <h3>Error-first callbacks (Node.js stil)</h3>
+                <pre><code>// Konvencija: prvi parametar je greška
+function ucitajPodatke(callback) {
+    let uspelo = Math.random() > 0.5;
+    
+    setTimeout(() => {
+        if (uspelo) {
+            callback(null, { ime: "Marko", godine: 25 });
+        } else {
+            callback(new Error("Neuspelo učitavanje"), null);
+        }
+    }, 1000);
+}
+
+ucitajPodatke((error, podaci) => {
+    if (error) {
+        console.log("Greška:", error.message);
+    } else {
+        console.log("Podaci:", podaci);
+    }
+});</code></pre>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practices:</strong>
+                    <p>- Imenujte callback funkcije (lakše debugging)<br>
+                    - Izbegavajte duboko ugnežđavanje (callback hell)<br>
+                    - Proveravajte da li je callback funkcija pre poziva<br>
+                    - Koristite arrow funkcije za kraće callback-ove<br>
+                    - Za složenije async operacije koristite Promises ili async/await</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Česte greške:</strong>
+                    <p>- Pozivanje callback-a umesto prosleđivanja: <code>funkcija(callback())</code> ❌<br>
+                    - Pravilno: <code>funkcija(callback)</code> ✅<br>
+                    - Zaboravljanje provere da li je callback funkcija:<br>
+                    <code>if (typeof callback === 'function') callback();</code></p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            {
+                title: "Vežba 1: Osnovni callback",
+                task: "Napravite funkciju 'izvrsi' koja prima broj i callback, pa poziva callback sa tim brojem.",
+                hint: "function izvrsi(broj, callback) { callback(broj); }",
+                solution: 'function izvrsi(broj, callback) {\n    callback(broj);\n}\n\nizvrsi(10, broj => {\n    console.log("Broj je: " + broj);\n});'
+            },
+            {
+                title: "Vežba 2: Filter callback",
+                task: "Napravite funkciju koja prima niz i callback, pa vraća filtrirane elemente.",
+                hint: "return niz.filter(callback);",
+                solution: 'function filtriraj(niz, callback) {\n    return niz.filter(callback);\n}\n\nconst brojevi = [1, 2, 3, 4, 5];\nconst parni = filtriraj(brojevi, n => n % 2 === 0);\nconsole.log(parni);  // [2, 4]'
+            }
+        ]
     }
 ];
 
